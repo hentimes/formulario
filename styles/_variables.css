@@ -1,0 +1,10 @@
+:root {
+    --primary-green: #19B471;
+    --modal-bg: #2C303A;
+    --input-bg: #3C414E;
+    --text-light: #F0F0F0;
+    --text-muted: #A0A5B1;
+    --border-color: #5A5F70;
+    --error-color: #e74c3c;
+    --font-family: 'Poppins', sans-serif;
+}

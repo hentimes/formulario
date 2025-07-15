@@ -1,0 +1,28 @@
+.modal-header .progress-bar {
+    width: 100%;
+    margin: 12px 0 0 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.progress-step {
+    display: flex; flex-direction: column; align-items: center;
+    position: relative; z-index: 3; text-align: center;
+    width: 80px;
+}
+.progress-step-icon {
+    width: 35px; height: 35px; border-radius: 50%;
+    background-color: var(--modal-bg); border: 3px solid var(--input-bg);
+    color: var(--text-muted); display: flex; justify-content: center;
+    align-items: center; font-weight: 600; transition: all 0.4s ease;
+}
+.progress-step-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
+.progress-step.active .progress-step-icon { border-color: var(--primary-green); }
+.progress-step.active .progress-step-label { color: var(--text-light); }
+.progress-line-bg, .progress-line-fg {
+    position: absolute; top: 17.5px; height: 4px;
+    transform: translateY(-50%); left: 0;
+}
+.progress-line-bg { background-color: var(--input-bg); width: 100%; z-index: 1; }
+.progress-line-fg { background-color: var(--primary-green); width: 0; z-index: 2; transition: width 0.4s ease-in-out; }
