@@ -4,7 +4,7 @@ import { isCurrentStepValid, isFullFormValid, validateField } from './_form-vali
 import { comunasRegiones, LOCAL_STORAGE_KEY } from './_config.js';
 
 // --- ¡MUY IMPORTANTE! Pega aquí la URL de tu Google Apps Script ---
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbw8XscMMxGzuMBcuCcKLXjZ4dE7T2TtlZFk4ksLF6HGDl4rtitUU8q38d972g2WVtOr/exec';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxBjh45rllyVrDArpgR8uz81bzaj4ntFiONghc_1LRWtRUVoPS1a_0OvrNMmWJM_J54/exec';
 // --------------------------------------------------------------------
 
 // --- Función de Lógica Movida a su Lugar Correcto ---
@@ -288,8 +288,14 @@ export function initFormSubmission() {
             const file = DOM.pdfFileInput.files[0];
             const extension = file.name.slice(file.name.lastIndexOf("."));
             const rutValue = DOM.rutInput.value.replace(/\./g, "").replace("-", "");
-            formData.append('nombre_archivo_pdf', `${getFormattedDateTime()}_${rutValue}${extension}`);
+
+            // Adjuntar archivo real con el nombre correcto
+            const customName = `${getFormattedDateTime()}_${rutValue}${extension}`;
+            const renamedFile = new File([file], customName, { type: file.type });
+
+            formData.append('certificadoREMU', renamedFile); // este es el campo que espera Code.gs
         }
+
         
         localStorage.removeItem(LOCAL_STORAGE_KEY);
 
